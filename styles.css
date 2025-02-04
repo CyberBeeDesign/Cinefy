@@ -74,9 +74,11 @@ h2 {
    margin-bottom: 15px;
 }
 
-#trending-text {
+#trending-text, #popular-text {
     justify-items: left;
-    margin: 0 140px;
+    margin-top: 30px;
+    margin-left: 140px;
+    margin-right: 140px;
 }
 
 /* Navigation menu styling */
@@ -102,18 +104,17 @@ nav a:hover {
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
     gap: 30px;
-    margin-left: 140px;
-    margin-right: 140px;
+    margin: 0 140px;
 }
 
 /* Individual Result Cards */
 #results-list li, .trend-card {
     overflow: hidden;
+    width: 200px;
     background-color: black;
     border-radius: 10px;
-    width: 200px;
     text-align: center;
     box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
     transition: transform 0.3s ease-in-out;
@@ -225,13 +226,17 @@ nav a:hover {
     margin: 25px 0; 
 }
 
-.cast-item, .filmography-item {
+.filmography-item, .cast-item {
     display: flex;
     flex-wrap: wrap;
     width: 100px;
     text-decoration: none;
     flex-direction: column;
     margin-bottom: 15px;
+}
+
+#cast-list {
+    justify-content: space-between;
 }
 
 .cast-photo, .filmography-poster {

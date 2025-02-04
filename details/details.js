@@ -40,8 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 : data.profile_path 
                 ? `https://image.tmdb.org/t/p/w300${data.profile_path}` 
                 : itemType === "person" 
-                ? "./ressources/placeholder-person.svg" 
-                : "./ressources/placeholder-movie.svg";
+                ? "../ressources/placeholder-person.svg" 
+                : "../ressources/placeholder-movie.svg";
 
             const posterElement = document.getElementById("poster");
             if (posterElement) posterElement.src = posterUrl;
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     castList.innerHTML = ""; // Clear any previous content
 
                     if (data.credits?.cast?.length > 0) {
-                        const defaultPersonImage = "./ressources/placeholder-person.svg";
+                        const defaultPersonImage = "../ressources/placeholder-person.svg";
 
                         data.credits.cast.slice(0, 6).forEach(actor => {
                             const actorImage = actor.profile_path
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const filmographyList = document.getElementById("filmography");
                 if (filmographyList) {
 
-                    const defaultMovieImage = "./ressources/placeholder-movie.svg";
+                    const defaultMovieImage = "../ressources/placeholder-movie.svg";
 
                     // Combine Movies & TV Shows
                     let allCredits = [];
