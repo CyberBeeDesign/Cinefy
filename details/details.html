@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    
+    <link rel="stylesheet" href="../styles.css">
+    <script defer src="details.js"></script> 
+    <script defer src="../search/search.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <a href="../index.html"><img src="../ressources/Logo Cinefy.svg" alt="logo"></a>
+        <div id="search-bar">
+            <form id="search-form" action="../search/search.html">
+                <input type="text" id="search-input" name="q" placeholder="Find Movies, TV Shows, or Celebrities" required>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </header>
+
+    <main id="details-container">
+        <div id="left-block">
+            <img id="poster" src="" alt="Poster">
+            <button id="trailer-btn">Watch Trailer</button>
+        </div>
+        <div id="right-block">
+            <h1 id="title"></h1>
+            <p id="review"></p>
+            <p id="overview"></p>
+            <h2 id="cast-title">Top Cast</h2>
+            <ul id="cast-list"></ul>
+            <h2 id="filmography-title">Filmography</h2>
+            <ul id="filmography"></ul>
+        </div>
+    </main>
+</body>
+</html>

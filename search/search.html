@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    
+    <link rel="stylesheet" href="../styles.css"> 
+    <script defer src="./script.js"></script> 
+    <script defer src="search.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <a href="../index.html"><img src="../ressources/Logo Cinefy.svg" alt="logo"></a>
+        <div id="search-bar">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Find Movies, TV Shows, or Celebrities" required>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Movies</a></li>
+                <li><a href="#">TV Shows</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2 id="search-result">Results for:  <span id="search-query"></span></h2>
+        <ul id="results-list"></ul> 
+    </main>
+</body>
+</html>
+
