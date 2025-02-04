@@ -35,3 +35,30 @@ Categorized into:
   - HTML, CSS, JavaScript
   - API integration for movie and actor data
 
+#### Installation & Setup
+
+Clone the repository:
+
+git clone https://github.com/cyberbeedesign/cinefy.git
+
+Navigate to the project directory:
+
+cd cinefy
+
+Open index.html in your preferred browser to explore Cinefy.
+
+#### Future Enhancements
+
+User authentication for personalized watchlists
+
+Additional filtering and sorting options
+
+Enhanced actor and movie details with images and related content
+
+#### Contributing
+
+Contributions are welcome! Feel free to fork the repository and submit a pull request with improvements.
+
+Author: Kamel Zehani
+GitHub: cyberbeedesign
+
