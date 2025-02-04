@@ -59,6 +59,6 @@ Enhanced actor and movie details with images and related content
 
 Contributions are welcome! Feel free to fork the repository and submit a pull request with improvements.
 
-Author: Kamel Zehani
-GitHub: cyberbeedesign
+Author: Kamel Zehani<br>
+GitHub: CyberBeeDesign
 
