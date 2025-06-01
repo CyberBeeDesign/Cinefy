@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details</title>
+    <link rel="icon" href="../ressources/Icon Cinefy.svg" type="image/x-icon">
+    <meta name="detail Cinefy" content="Detailed information about movies and TV shows including cast, reviews, and trailers. Explore your favorite content with Cinefy.">
     
     <link rel="stylesheet" href="../styles.css">
     <script defer src="details.js"></script> 
@@ -15,13 +17,19 @@
 </head>
 <body>
     <header id="header">
-        <a href="../index.html"><img src="../ressources/Logo Cinefy.svg" alt="logo"></a>
+        <a href="../index.html"><img  id="img-logo" src="../ressources/Logo Cinefy.svg" alt="logo"></a>
         <div id="search-bar">
-            <form id="search-form" action="../search/search.html">
-                <input type="text" id="search-input" name="q" placeholder="Find Movies, TV Shows, or Celebrities" required>
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Find Movies or TV Shows" required>
                 <button type="submit">Search</button>
             </form>
         </div>
+        <nav>
+            <ul>
+                <li><a href="#">Movies</a></li>
+                <li><a href="#">TV Shows</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main id="details-container">

@@ -24,9 +24,9 @@ header {
     color: white;
 }
 
-/* Logo styling */
-header img {
-    height: 150px; /* Adjust as needed */
+#img-logo {
+    width: auto;
+    height: 70px;
 }
 
 .search-bar{
@@ -68,12 +68,6 @@ button:hover {
     background-color: #D4AC26;
 }
 
-h2 {
-   font-size: 25px;
-   font-weight: bold;
-   margin-bottom: 15px;
-}
-
 #trending-text, #popular-text {
     justify-items: left;
     margin-top: 30px;
@@ -81,42 +75,69 @@ h2 {
     margin-right: 140px;
 }
 
+#trending-text h2, #popular-text h2 {
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: black;
+    padding-left: 10px;
+    border-left: #FFCE2F 5px solid;
+}
+
+#trending-text p, #popular-text p {
+    font-size: 20px;
+    color: #758691 ;
+    padding-left: 10px;
+    
+} 
+
 /* Navigation menu styling */
 nav ul {
     display: flex;
     list-style: none;
-    gap: 15px;
+    gap: 30px;
 }
 
 nav a {
     color: black;
+    font-family: lato, serif;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px 0;
     text-decoration: none;
+    transition: ease-in-out 0.3s;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    border-bottom:#FFCE2F 2px solid;
 }
 
 
 /* Results Layout (Grid-based) */
 #results-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     margin: 0 140px;
+    list-style: none;
+    padding: 0;
+    align-items: flex-start;
+    justify-items: center;
 }
 
 /* Individual Result Cards */
 #results-list li, .trend-card {
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    height: 500px;
     width: 200px;
     background-color: black;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+    align-items: space-between;
     transition: transform 0.3s ease-in-out;
     padding: 10px 5px;
 }
@@ -171,12 +192,9 @@ nav a:hover {
 
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-    #results-list {
+#results-list {
         flex-direction: column;
         align-items: center;
-    }
 }
 
 /*Detail Page - Movie & TV Show*/
@@ -272,13 +290,18 @@ nav a:hover {
 /*Trending*/
 .carousel {
     position: relative;
+    left: 50%;
+    right: 50%;
     width: 100%;
+    margin-left: -50vw;
+    margin-right: -50vw;
     overflow: hidden;
     padding: 0;
-    margin: 0;
 }
 
 .title-rating  {
+    display: flex;
+    flex-direction: column;
     font-family: "Lato", serif;
     font-size: 16px;
     margin: 20px 0;
@@ -290,13 +313,19 @@ nav a:hover {
     display: flex;
     transition: transform 0.5s ease-in-out;
     width: 300%; /* Three slides */
+    box-sizing: border-box;
+    margin: 0 auto;
+    /* Remove padding here */
 }
 
 .carousel-slide {
     display: flex;
     gap: 30px;
-    justify-content: space-between;
-    margin: 30px 140px ;
+    justify-content: center;
+    align-items: center;
+    width: calc(100vw - 280px); /* Full width minus 140px each side */
+    margin: 30px 140px;
+    box-sizing: border-box;
 }
 
 
@@ -320,7 +349,8 @@ nav a:hover {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
+    background: #FFCE2F;
+    opacity: 0.7;
     color: white;
     border: none;
     padding: 10px;
@@ -331,5 +361,39 @@ nav a:hover {
 
 .prev-btn { left: 0; }
 .next-btn { right: 0; }
+
+@media only screen and (min-width: 768px) {
+
+ body {
+        padding: 20px;
+        text-align: center;
+        width: auto; /* Remove 100vw to prevent horizontal scroll */
+    }
+    header {
+        max-width: 900px;
+        margin: 0 auto;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+
+    input[type="text"] {
+    width: 300px;
+    border-radius: 3px;
+    font-size: 16px;
+    }
+
+    nav a {
+    font-size: 16px;
+    }
+
+    .carousel-slide {
+    gap: 10px;
+    }
+
+    .title-rating {
+    font-size: 14px;
+    }
+}
 
 

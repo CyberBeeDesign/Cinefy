@@ -1,6 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Handle search form submission globally
+    const searchForm = document.getElementById("search-form");
+    const searchInput = document.getElementById("search-input");
+    if (searchForm && searchInput) {
+        searchForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const newQuery = searchInput.value.trim();
+            if (newQuery) {
+                // Detect current folder and build correct relative path
+                let searchPage = "search/search.html";
+                if (window.location.pathname.includes("/search/")) {
+                    searchPage = "search.html";
+                } else if (window.location.pathname.includes("/details/")) {
+                    searchPage = "../search/search.html";
+                }
+                window.location.href = searchPage + "?q=" + encodeURIComponent(newQuery);
+            }
+        });
+    }
+
+    // Only run the search results logic if on the search results page
     const searchQueryElement = document.getElementById("search-query");
-    if (!searchQueryElement) return; // Stop execution if the search bar doesn't exist
+    const resultsList = document.getElementById("results-list");
+    if (!searchQueryElement || !resultsList) return;
 
     const apiKey = "3e438c22468d9f184bc856928eece3b2";
     const urlParams = new URLSearchParams(window.location.search);
@@ -16,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch(`https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${encodeURIComponent(query)}`)
         .then(response => response.json())
         .then(data => {
-            const resultsList = document.getElementById("results-list");
             resultsList.innerHTML = "";
 
             if (data.results.length > 0) {
@@ -42,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         <br>
                         <a href="../details/details.html?id=${item.id}&type=${type}">${title}${displayRating}</a>
                         `;
-
 
                     resultsList.appendChild(li);
                 });

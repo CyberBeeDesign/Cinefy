@@ -1,4 +1,3 @@
-
 //Search Bar
 document.addEventListener("DOMContentLoaded", function () {
     const searchForm = document.getElementById("search-form");
@@ -16,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// Fetch and display trending movies & TV shows
 document.addEventListener("DOMContentLoaded", function () {
     const apiKey = "3e438c22468d9f184bc856928eece3b2";
 
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 if (data.results.length === 0) return;
-                const trendingItems = data.results.slice(0, 18);
+                const trendingItems = data.results.slice(0, 27); // <-- get up to 27 items
                 createCarousel(trendingItems, containerId, type);
             })
             .catch(error => console.error(`Error fetching trending ${type}:`, error));
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 if (data.results.length === 0) return;
-                const popularItems = data.results.slice(0, 18);
+                const popularItems = data.results.slice(0, 27); // <-- get up to 27 items
                 createCarousel(popularItems, containerId, "movie");  // <-- Pass "movie" as type
             })
             .catch(error => console.error(`Error fetching popular ${type}:`, error));
@@ -60,7 +60,18 @@ document.addEventListener("DOMContentLoaded", function () {
     function createCarousel(items, containerId, type) {
         const container = document.getElementById(containerId);
         if (!container) return;
-    
+
+        // Always use 18 cards, fill with empty slots if needed
+        const totalCards = 18;
+        const cardsPerSlide = 6;
+        const totalSlides = 3;
+
+        // Ensure we have exactly 18 items (fill with null if less)
+        const filledItems = items.slice(0, totalCards);
+        while (filledItems.length < totalCards) {
+            filledItems.push(null);
+        }
+
         container.innerHTML = `
             <div class="carousel">
                 <button class="prev-btn">&lt;</button>
@@ -68,36 +79,43 @@ document.addEventListener("DOMContentLoaded", function () {
                 <button class="next-btn">&gt;</button>
             </div>
         `;
-    
+
         const track = container.querySelector(".carousel-track");
         let slides = [];
-    
-        for (let i = 0; i < 3; i++) {
+
+        for (let i = 0; i < totalSlides; i++) {
             const slide = document.createElement("div");
             slide.classList.add("carousel-slide");
-            items.slice(i * 6, (i + 1) * 6).forEach(item => {
-                const card = createCard(item, type);
-                slide.appendChild(card);
+            filledItems.slice(i * cardsPerSlide, (i + 1) * cardsPerSlide).forEach(item => {
+                if (item) {
+                    const card = createCard(item, type);
+                    slide.appendChild(card);
+                } else {
+                    // Optional: add an empty placeholder for missing cards
+                    const empty = document.createElement("div");
+                    empty.classList.add("trend-card", "empty-card");
+                    slide.appendChild(empty);
+                }
             });
             slides.push(slide);
             track.appendChild(slide);
         }
-    
+
         let currentIndex = 0;
         const prevBtn = container.querySelector(".prev-btn");
         const nextBtn = container.querySelector(".next-btn");
-    
+
         function updateCarousel() {
-            track.style.transform = `translateX(-${currentIndex * (100 / 3 - 0.35)}%)`; 
+            track.style.transform = `translateX(-${currentIndex * (100 / totalSlides)}%)`;
         }
-    
+
         nextBtn.addEventListener("click", () => {
             if (currentIndex < slides.length - 1) {
                 currentIndex++;
                 updateCarousel();
             }
         });
-    
+
         prevBtn.addEventListener("click", () => {
             if (currentIndex > 0) {  
                 currentIndex--;
